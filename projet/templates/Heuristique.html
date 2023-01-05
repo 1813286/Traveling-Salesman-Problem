@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<h1>Heuristic programming</h1>
+
+<dl class="d-flex">
+    <dt class="pe-2">Cost : </dt>
+    <dd class="me-5"><kbd>{{cost}}</kbd></dd>
+    <dt class="ms-5 pe-2">Execution time : </dt>
+    <dd><kbd>{{ Mytime }} ms</kbd></dd>
+</dl>
+
+<canvas id="myChart" width="100" height="30"></canvas>
+<script>
+
+const labels = [];
+result = []
+resultTemporary = "{{result}}".replace(/\[|\]/g, "")
+resultTemporary = resultTemporary.split(",")
+
+resultTemporary.forEach(res => {
+    if(Number(res)) {
+        result.push(parseInt(res));
+        labels.push(`City ${parseInt(res)}`)
+    }
+});
+result.push(1)
+labels.push("City 1")
+
+const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Shorter path',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: result,
+    }]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+        animations: {
+            tension: {
+                duration: 1000,
+                easing: 'linear',
+                from: 1,
+                to: 0,
+                loop: true
+            }
+        },
+        scales: {
+            y: {
+                display: false
+            },      
+        }
+    }
+};
+</script>
+
+<script type="module">
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+);
+</script>
+
+{% endblock %}

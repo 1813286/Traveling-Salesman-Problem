@@ -1,0 +1,149 @@
+{% extends 'layout.html' %}
+{% block title %}Home Page{% endblock %}
+<style>
+  .label{
+   color: black;
+  }
+</style>
+{% block content %}
+
+<div class="feautures">
+  <div class="insert-filiere">
+    <div>
+      <h3>Dynamic Method</h3>
+      <hr style="color: black;">
+      </hr>
+      <p style="color: black;"> shoose this option if you want to calculate the TSP problem using dynamic programming </p>
+      <form action="options/insertfil.php" method="post">
+        <button style="border: none;" type="button" class="btn-secondary" data-bs-toggle="modal"
+          data-bs-target="#dynamiqueModal">Dynamic</button>
+      </form>
+
+    </div>
+  </div>
+  <div class="insert-section">
+    <div>
+      <h3>Heuristique Method</h3>
+      <hr style="color: black;">
+      </hr>
+      <p style="color: black;">shoose this option if you want to calculate the TSP problem using Heuristique 2-opt </p>
+      <form action="options/insert-section.php" method="post">
+        <button style="border: none;" type="button" class="btn-secondary" data-bs-toggle="modal"
+          data-bs-target="#heuristicModal">Heuristique</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- dynamic Modal -->
+<div class="modal fade" id="dynamiqueModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Choose Your Instance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form style="display: flex; flex-direction: column;" action="/Dynamic" method="post">
+          <div>
+            <input class="form-check-input" type="radio" name="instance_1" id="flexRadioDefault1" checked>
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault1">Instance 1</label>
+            </div>
+          <div class="">
+            <input class="form-check-input" type="radio" name="instance_2" id="flexRadioDefault2" >
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault2">Instance 2</label>
+          </div>
+          <div class="">
+            <input class="form-check-input" type="radio" name="instance_3" id="flexRadioDefault3">
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault3">Instance 3</label>
+          </div>
+          <input id="checked_instance" name="checked_instance" type="text" hidden value="instance_1">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Heuristic Modal -->
+<div class="modal fade" id="heuristicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Choose Your Instance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form style="display: flex; flex-direction: column;" action="/Heuristic" method="post">
+          <div class="form-check">
+            <input class="form-check-input" value="1" type="radio" name="instance_1" id="flexRadioDefault11" checked>
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault11">Instance 1</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="2" type="radio" name="instance_2" id="flexRadioDefault22">
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault22">Instance 2</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="3" type="radio" name="instance_3" id="flexRadioDefault33">
+            <label style="color: black;" class="form-check-label" for="flexRadioDefault33">Instance 3</label>
+          </div>
+          <input id="checked_instance2" name="checked_instance2" type="text" hidden value="instance_1">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Calculer</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  selected1 = document.getElementById('checked_instance')
+  
+    document.getElementById('flexRadioDefault1').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault2').checked = false
+      document.getElementById('flexRadioDefault3').checked = false
+      selected1.value = 'instance_1'
+    });
+
+    document.getElementById('flexRadioDefault2').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault1').checked = false
+      document.getElementById('flexRadioDefault3').checked = false
+      selected1.value = 'instance_2'
+    });
+    
+    document.getElementById('flexRadioDefault3').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault2').checked = false
+      document.getElementById('flexRadioDefault1').checked = false
+      selected1.value = 'instance_3'
+    });
+  
+
+  selected2 = document.getElementById('checked_instance2')
+    document.getElementById('flexRadioDefault11').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault22').checked = false
+      document.getElementById('flexRadioDefault33').checked = false
+      selected2.value = 'instance_1'
+    });
+
+    document.getElementById('flexRadioDefault22').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault11').checked = false
+      document.getElementById('flexRadioDefault33').checked = false
+      selected2.value = 'instance_2'
+    });
+    
+    document.getElementById('flexRadioDefault33').addEventListener('click', () => {
+      document.getElementById('flexRadioDefault22').checked = false
+      document.getElementById('flexRadioDefault11').checked = false
+      selected2.value = 'instance_3'
+    });
+
+</script>
+{% endblock %}

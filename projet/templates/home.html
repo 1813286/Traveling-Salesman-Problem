@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-panel.css') }}">
+    <title>Sass-Css</title>
+</head>
+<body>
+    <header class="showcase">
+        <div class="container">
+            <nav>
+                <h1 style="color: #f4f4f4; margin-bottom: 40px; margin-top: 20px;" class="logo">Voyageur de Commerce</h1>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/calcule">Calculer</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="showcase-content">
+                <div>
+                    <h1 style="color: #f4f4f4; margin-bottom: 40px; font-size: 30px;">Problème du Voyageur de Commerce</h1>
+                    <p style="font-size: small; margin: 30px;" class="m-y1">
+                        le problème du voyageur de commerce, ou problème du commis voyageur, 
+                        est un problème d'optimisation qui consiste à déterminer, étant donné une liste de villes et 
+                        les distances entre toutes les paires de villes, le plus court circuit qui passe par chaque ville 
+                        une et une seule fois.
+                    </p>
+                    <!-- <a href="#" class="btn-primary">Learn More</a> -->
+                    <a href="/calcule" class="btn-secondary">Calculer Plus Court Chemin</a>
+                </div>
+                <img src="{{ url_for('static', filename='images/tsp_image.png') }}"/>
+            </div>
+        </div>
+    </header>
+</body>
+</html>
