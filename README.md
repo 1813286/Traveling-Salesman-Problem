@@ -1,15 +1,13 @@
 # Traveling-Salesman-Problem
 Using Python, Flask, Excel as database to specifie distince between cities 
 
-==================
 USING CMD PROMPT:
-==================
 
 STEP1:
-PATH_OF_YOUR_PROJECT\projet>  .\venv\Scripts\activate
+.\venv\Scripts\activate
 
 STEP2:
-(venv) PATH_OF_YOUR_PROJECT\projet> python .\app.py
+python .\app.py
 =======================================================================================================================
 * Serving Flask app 'app'                                                                                             |
  * Debug mode: on                                                                                                     |
